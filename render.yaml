@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: theme-switcher
+    env: static
+    buildCommand: CI=false npm install && CI=false npm run build
+    publishDir: build
+    staticPublishPath: ./build
+    envVars:
+      - key: NODE_VERSION
+        value: 16
+      - key: NODE_ENV
+        value: production
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
