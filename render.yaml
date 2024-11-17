@@ -2,7 +2,10 @@ services:
   - type: web
     name: theme-switcher
     env: static
-    buildCommand: CI=false npm install && CI=false npm run build
+    buildCommand: |
+      npm ci
+      chmod +x ./node_modules/.bin/react-scripts
+      CI=false npm run build
     publishDir: build
     staticPublishPath: ./build
     envVars:
@@ -10,6 +13,10 @@ services:
         value: 16
       - key: NODE_ENV
         value: production
+      - key: CI
+        value: false
+      - key: SKIP_PREFLIGHT_CHECK
+        value: true
     routes:
       - type: rewrite
         source: /*
