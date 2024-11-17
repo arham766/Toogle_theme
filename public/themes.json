@@ -1,0 +1,1072 @@
+{
+  "light1": {
+    "name": "Classic Light",
+    "colors": {
+      "primary": "#2563eb",
+      "background": "#ffffff",
+      "text": "#1f2937",
+      "secondary": "#f3f4f6",
+      "accent": "#3b82f6"
+    }
+  },
+  "light2": {
+    "name": "Warm Light",
+    "colors": {
+      "primary": "#d97706",
+      "background": "#fffbeb",
+      "text": "#292524",
+      "secondary": "#fef3c7",
+      "accent": "#f59e0b"
+    }
+  },
+  "light3": {
+    "name": "Cool Light",
+    "colors": {
+      "primary": "#0891b2",
+      "background": "#f0fdfa",
+      "text": "#134e4a",
+      "secondary": "#ccfbf1",
+      "accent": "#06b6d4"
+    }
+  },
+  "light4": {
+    "name": "Forest Light",
+    "colors": {
+      "primary": "#059669",
+      "background": "#f0fdf4",
+      "text": "#064e3b",
+      "secondary": "#dcfce7",
+      "accent": "#10b981"
+    }
+  },
+  "light5": {
+    "name": "Rose Light",
+    "colors": {
+      "primary": "#e11d48",
+      "background": "#fff1f2",
+      "text": "#881337",
+      "secondary": "#ffe4e6",
+      "accent": "#f43f5e"
+    }
+  },
+  "light6": {
+    "name": "Seafoam Light",
+    "colors": {
+      "primary": "#14b8a6",
+      "background": "#f0fdfa",
+      "text": "#134e4a",
+      "secondary": "#99f6e4",
+      "accent": "#2dd4bf"
+    }
+  },
+  "light7": {
+    "name": "Lavender Light",
+    "colors": {
+      "primary": "#8b5cf6",
+      "background": "#faf5ff",
+      "text": "#4c1d95",
+      "secondary": "#e9d5ff",
+      "accent": "#a855f7"
+    }
+  },
+  "light8": {
+    "name": "Sunset Light",
+    "colors": {
+      "primary": "#f97316",
+      "background": "#fff7ed",
+      "text": "#7c2d12",
+      "secondary": "#fed7aa",
+      "accent": "#fb923c"
+    }
+  },
+  "light9": {
+    "name": "Sky Light",
+    "colors": {
+      "primary": "#0284c7",
+      "background": "#f0f9ff",
+      "text": "#0c4a6e",
+      "secondary": "#bae6fd",
+      "accent": "#38bdf8"
+    }
+  },
+  "light10": {
+    "name": "Emerald Light",
+    "colors": {
+      "primary": "#059669",
+      "background": "#ecfdf5",
+      "text": "#064e3b",
+      "secondary": "#a7f3d0",
+      "accent": "#34d399"
+    }
+  },
+  "dark1": {
+    "name": "Classic Dark",
+    "colors": {
+      "primary": "#60a5fa",
+      "background": "#1f2937",
+      "text": "#f3f4f6",
+      "secondary": "#374151",
+      "accent": "#3b82f6"
+    }
+  },
+  "dark2": {
+    "name": "Deep Dark",
+    "colors": {
+      "primary": "#8b5cf6",
+      "background": "#18181b",
+      "text": "#fafafa",
+      "secondary": "#27272a",
+      "accent": "#a78bfa"
+    }
+  },
+  "dark3": {
+    "name": "Midnight",
+    "colors": {
+      "primary": "#6366f1",
+      "background": "#020617",
+      "text": "#e2e8f0",
+      "secondary": "#1e293b",
+      "accent": "#818cf8"
+    }
+  },
+  "dark4": {
+    "name": "Forest Dark",
+    "colors": {
+      "primary": "#10b981",
+      "background": "#022c22",
+      "text": "#ecfdf5",
+      "secondary": "#064e3b",
+      "accent": "#34d399"
+    }
+  },
+  "dark5": {
+    "name": "Ruby Dark",
+    "colors": {
+      "primary": "#f43f5e",
+      "background": "#1c1917",
+      "text": "#fecdd3",
+      "secondary": "#292524",
+      "accent": "#fb7185"
+    }
+  },
+  "dark6": {
+    "name": "Ocean Dark",
+    "colors": {
+      "primary": "#06b6d4",
+      "background": "#164e63",
+      "text": "#ecfeff",
+      "secondary": "#083344",
+      "accent": "#22d3ee"
+    }
+  },
+  "dark7": {
+    "name": "Amethyst Dark",
+    "colors": {
+      "primary": "#c084fc",
+      "background": "#2e1065",
+      "text": "#faf5ff",
+      "secondary": "#4c1d69",
+      "accent": "#8e2de2"
+    }
+  },
+  "dark8": {
+    "name": "Ember Dark",
+    "colors": {
+      "primary": "#fb923c",
+      "background": "#431407",
+      "text": "#fff7ed",
+      "secondary": "#7c2d12",
+      "accent": "#f97316"
+    }
+  },
+  "dark9": {
+    "name": "Azure Dark",
+    "colors": {
+      "primary": "#38bdf8",
+      "background": "#082f49",
+      "text": "#f0f9ff",
+      "secondary": "#0c4a6e",
+      "accent": "#0ea5e9"
+    }
+  },
+  "dark10": {
+    "name": "Jade Dark",
+    "colors": {
+      "primary": "#34d399",
+      "background": "#064e3b",
+      "text": "#ecfdf5",
+      "secondary": "#065f46",
+      "accent": "#10b981"
+    }
+  },
+  "special1": {
+    "name": "Neon Synthwave",
+    "colors": {
+      "primary": "#f0abfc",
+      "background": "#18012c",
+      "text": "#ffd6ff",
+      "secondary": "#3f0071",
+      "accent": "#ff00ff"
+    }
+  },
+  "special2": {
+    "name": "Retro Miami",
+    "colors": {
+      "primary": "#ff0080",
+      "background": "#001B2E",
+      "text": "#00fff5",
+      "secondary": "#002d4a",
+      "accent": "#ff2a6d"
+    }
+  },
+  "special3": {
+    "name": "Arctic Aurora",
+    "colors": {
+      "primary": "#39ff14",
+      "background": "#0a192f",
+      "text": "#e0ffff",
+      "secondary": "#112240",
+      "accent": "#00ff9f"
+    }
+  },
+  "special4": {
+    "name": "Cosmic Dust",
+    "colors": {
+      "primary": "#b983ff",
+      "background": "#16063a",
+      "text": "#e2daff",
+      "secondary": "#2d1b69",
+      "accent": "#8e2de2"
+    }
+  },
+  "special5": {
+    "name": "Molten Gold",
+    "colors": {
+      "primary": "#ffd700",
+      "background": "#1a0f00",
+      "text": "#ffe5b4",
+      "secondary": "#4a3000",
+      "accent": "#ffb700"
+    }
+  },
+  "gradient1": {
+    "name": "Blue to Purple Gradient",
+    "colors": {
+      "primary": "#1e3a8a",
+      "background": "#9333ea",
+      "text": "#ffffff",
+      "secondary": "#4f46e5",
+      "accent": "#8b5cf6"
+    }
+  },
+  "gradient2": {
+    "name": "Red to Orange Gradient",
+    "colors": {
+      "primary": "#ef4444",
+      "background": "#f97316",
+      "text": "#ffffff",
+      "secondary": "#f59e0b",
+      "accent": "#f97316"
+    }
+  },
+  "gradient3": {
+    "name": "Pink to Yellow Gradient",
+    "colors": {
+      "primary": "#ec4899",
+      "background": "#fbbf24",
+      "text": "#ffffff",
+      "secondary": "#fbbf24",
+      "accent": "#fb7185"
+    }
+  },
+  "gradient4": {
+    "name": "Green to Teal Gradient",
+    "colors": {
+      "primary": "#10b981",
+      "background": "#14b8a6",
+      "text": "#ffffff",
+      "secondary": "#06b6d4",
+      "accent": "#14b8a6"
+    }
+  },
+  "gradient5": {
+    "name": "Black to Gray Gradient",
+    "colors": {
+      "primary": "#000000",
+      "background": "#4b5563",
+      "text": "#ffffff",
+      "secondary": "#6b7280",
+      "accent": "#9ca3af"
+    }
+  },
+  "gradient6": {
+    "name": "Rainbow Gradient",
+    "colors": {
+      "primary": "#ff0000",
+      "background": "#ff7f00",
+      "text": "#ffff00",
+      "secondary": "#00ff00",
+      "accent": "#0000ff"
+    }
+  },
+  "gradient7": {
+    "name": "Sunset Gradient",
+    "colors": {
+      "primary": "#ff7e5f",
+      "background": "#feb47b",
+      "text": "#ffffff",
+      "secondary": "#fdcb6e",
+      "accent": "#ff9a8b"
+    }
+  },
+  "gradient8": {
+    "name": "Ocean Gradient",
+      "colors": {
+        "primary": "#2E8B57",
+        "background": "#20B2AA",
+        "text": "#ffffff",
+        "secondary": "#40E0D0",
+        "accent": "#00CED1"
+      }
+  },
+  "gradient9": {
+    "name": "Twilight Gradient",
+    "colors": {
+      "primary": "#8A2BE2",
+      "background": "#4B0082",
+      "text": "#FFFFFF",
+      "secondary": "#6A5ACD",
+      "accent": "#483D8B"
+    }
+  },
+  "gradient10": {
+    "name": "Neon Gradient",
+    "colors": {
+      "primary": "#39FF14",
+      "background": "#00FFFF",
+      "text": "#FF00FF",
+      "secondary": "#7F00FF",
+      "accent": "#FF1493"
+    }
+  },
+  "functional1": {
+    "name": "Primary Blue (Call to Action)",
+    "colors": {
+      "primary": "#2563eb",
+      "background": "#ffffff",
+      "text": "#1f2937",
+      "secondary": "#f3f4f6",
+      "accent": "#3b82f6"
+    }
+  },
+  "functional2": {
+    "name": "Secondary Gray (Neutral Actions)",
+    "colors": {
+      "primary": "#6b7280",
+      "background": "#f9fafb",
+      "text": "#374151",
+      "secondary": "#d1d5db",
+      "accent": "#9ca3af"
+    }
+  },
+  "functional3": {
+    "name": "Success Green",
+    "colors": {
+      "primary": "#10b981",
+      "background": "#ecfdf5",
+      "text": "#064e3b",
+      "secondary": "#a7f3d0",
+      "accent": "#34d399"
+    }
+  },
+  "functional4": {
+    "name": "Error Red",
+    "colors": {
+      "primary": "#ef4444",
+      "background": "#fee2e2",
+      "text": "#991b1b",
+      "secondary": "#fecaca",
+      "accent": "#f87171"
+    }
+  },
+  "functional5": {
+    "name": "Warning Orange",
+    "colors": {
+      "primary": "#f97316",
+      "background": "#fff7ed",
+      "text": "#7c2d12",
+      "secondary": "#ffedd5",
+      "accent": "#fb923c"
+    }
+  },
+  "functional6": {
+    "name": "Informational Cyan",
+    "colors": {
+      "primary": "#06b6d4",
+      "background": "#e0f2fe",
+      "text": "#075985",
+      "secondary": "#bae6fd",
+      "accent": "#22d3ee"
+    }
+  },
+  "functional7": {
+    "name": "Highlight Yellow",
+    "colors": {
+      "primary": "#facc15",
+      "background": "#fffbeb",
+      "text": "#92400e",
+      "secondary": "#fef08a",
+      "accent": "#fbbf24"
+    }
+  },
+  "functional8": {
+    "name": "Disabled Light Gray",
+    "colors": {
+      "primary": "#d1d5db",
+      "background": "#f9fafb",
+      "text": "#6b7280",
+      "secondary": "#e5e7eb",
+      "accent": "#9ca3af"
+    }
+  },
+  "ruby1": {
+    "name": "Ruby Red",
+    "colors": {
+      "primary": "#f43f5e",
+      "background": "#fff1f2",
+      "text": "#881337",
+      "secondary": "#ffe4e6",
+      "accent": "#fb7185"
+    }
+  },
+  "ruby2": {
+    "name": "Crimson",
+    "colors": {
+      "primary": "#dc2626",
+      "background": "#fef2f2",
+      "text": "#991b1b",
+      "secondary": "#fee2e2",
+      "accent": "#ef4444"
+    }
+  },
+  "ruby3": {
+    "name": "Cherry Red",
+    "colors": {
+      "primary": "#ff0000",
+      "background": "#ffe5e5",
+      "text": "#800000",
+      "secondary": "#ffcccc",
+      "accent": "#ff4d4d"
+    }
+  },
+  "ruby4": {
+    "name": "Rose Red",
+    "colors": {
+      "primary": "#e11d48",
+      "background": "#fff1f2",
+      "text": "#881337",
+      "secondary": "#ffe4e6",
+      "accent": "#f43f5e"
+    }
+  },
+  "ruby5": {
+    "name": "Garnet",
+    "colors": {
+      "primary": "#800020",
+      "background": "#ffe5e5",
+      "text": "#4d0000",
+      "secondary": "#ffcccc",
+      "accent": "#b03060"
+    }
+  },
+  "ruby6": {
+    "name": "Dark Ruby",
+    "colors": {
+      "primary": "#990000",
+      "background": "#4d0000",
+      "text": "#ffffff",
+      "secondary": "#cc0000",
+      "accent": "#ff0000"
+    }
+  },
+  "ruby7": {
+    "name": "Light Coral",
+    "colors": {
+      "primary": "#f08080",
+      "background": "#ffe5e5",
+      "text": "#800000",
+      "secondary": "#ffb6b6",
+      "accent": "#ff7f7f"
+    }
+  },
+  "ruby8": {
+    "name": "Raspberry",
+    "colors": {
+      "primary": "#e30b5d",
+      "background": "#ffe5e5",
+      "text": "#800000",
+      "secondary": "#ffb6b6",
+      "accent": "#ff4d88"
+    }
+  },
+  "ruby9": {
+    "name": "Deep Maroon",
+    "colors": {
+      "primary": "#800000",
+      "background": "#ffe5e5",
+      "text": "#ffffff",
+      "secondary": "#cc0000",
+      "accent": "#ff0000"
+    }
+  },
+  "ruby10": {
+    "name": "Scarlet",
+    "colors": {
+      "primary": "#ff2400",
+      "background": "#ffe5e5",
+      "text": "#800000",
+      "secondary": "#ffb6b6",
+      "accent": "#ff4d4d"
+    }
+  },
+  "neutral1": {
+    "name": "Black",
+    "colors": {
+      "primary": "#000000",
+      "background": "#000000",
+      "text": "#ffffff",
+      "secondary": "#333333",
+      "accent": "#666666"
+    }
+  },
+  "neutral2": {
+    "name": "White",
+    "colors": {
+      "primary": "#ffffff",
+      "background": "#ffffff",
+      "text": "#000000",
+      "secondary": "#f3f4f6",
+      "accent": "#cccccc"
+    }
+  },
+  "neutral3": {
+    "name": "Gray",
+    "colors": {
+      "primary": "#6b7280",
+      "background": "#f9fafb",
+      "text": "#374151",
+      "secondary": "#d1d5db",
+      "accent": "#9ca3af"
+    }
+  },
+  "neutral4": {
+    "name": "Taupe",
+    "colors": {
+      "primary": "#483c32",
+      "background": "#d2b48c",
+      "text": "#2f4f4f",
+      "secondary": "#c0c0c0",
+      "accent": "#a9a9a9"
+    }
+  },
+  "neutral5": {
+    "name": "Beige",
+    "colors": {
+      "primary": "#f5f5dc",
+      "background": "#f5f5dc",
+      "text": "#333333",
+      "secondary": "#e5e5e5",
+      "accent": "#dcdcdc"
+    }
+  },
+  "neutral6": {
+    "name": "Sand",
+    "colors": {
+      "primary": "#f4a460",
+      "background": "#fff8dc",
+      "text": "#8b4513",
+      "secondary": "#ede9d8",
+      "accent": "#c2b280"
+    }
+  },
+  "neutral7": {
+    "name": "Stone",
+    "colors": {
+      "primary": "#708090",
+      "background": "#f0f0f0",
+      "text": "#2f4f4f",
+      "secondary": "#b0c4de",
+      "accent": "#778899"
+    }
+  },
+  "neutral8": {
+    "name": "Ecru",
+    "colors": {
+      "primary": "#c2b280",
+      "background": "#fff8dc",
+      "text": "#5b4636",
+      "secondary": "#e5d8b0",
+      "accent": "#d2b48c"
+    }
+  },
+  "neutral9": {
+    "name": "Smoky Gray",
+    "colors": {
+      "primary": "#708090",
+      "background": "#2f4f4f",
+      "text": "#f3f4f6",
+      "secondary": "#a9a9a9",
+      "accent": "#778899"
+    }
+  },
+  "accent1": {
+    "name": "Neon Green",
+    "colors": {
+      "primary": "#39FF14",
+      "background": "#e0ffe0",
+      "text": "#004d00",
+      "secondary": "#66ff66",
+      "accent": "#00FF00"
+    }
+  },
+  "accent2": {
+    "name": "Electric Blue",
+    "colors": {
+      "primary": "#7df9ff",
+      "background": "#e0f7ff",
+      "text": "#003366",
+      "secondary": "#b3e5fc",
+      "accent": "#00bfff"
+    }
+  },
+  "accent3": {
+    "name": "Hot Pink",
+    "colors": {
+      "primary": "#ff69b4",
+      "background": "#ffe6f0",
+      "text": "#800000",
+      "secondary": "#ffb6c1",
+      "accent": "#ff1493"
+    }
+  },
+  "accent4": {
+    "name": "Lemon Yellow",
+    "colors": {
+      "primary": "#fff700",
+      "background": "#ffffe0",
+      "text": "#333300",
+      "secondary": "#ffffb3",
+      "accent": "#ffeb3b"
+    }
+  },
+  "accent5": {
+    "name": "Bright Orange",
+    "colors": {
+      "primary": "#ffa500",
+      "background": "#fff5e1",
+      "text": "#663300",
+      "secondary": "#ffcc80",
+      "accent": "#ff9800"
+    }
+  },
+  "accent6": {
+    "name": "Teal",
+    "colors": {
+      "primary": "#008080",
+      "background": "#e0ffff",
+      "text": "#003333",
+      "secondary": "#80ffff",
+      "accent": "#20b2aa"
+    }
+  },
+  "accent7": {
+    "name": "Cyan",
+    "colors": {
+      "primary": "#00ffff",
+      "background": "#e0ffff",
+      "text": "#003333",
+      "secondary": "#b2ebf2",
+      "accent": "#00bcd4"
+    }
+  },
+  "accent8": {
+    "name": "Magenta",
+    "colors": {
+      "primary": "#ff00ff",
+      "background": "#ffe6ff",
+      "text": "#4d004d",
+      "secondary": "#ffb3ff",
+      "accent": "#ff00cc"
+    }
+  },
+  "seasonal1": {
+    "name": "Spring Green",
+    "colors": {
+      "primary": "#00ff7f",
+      "background": "#e0ffe0",
+      "text": "#004d00",
+      "secondary": "#66ff66",
+      "accent": "#32cd32"
+    }
+  },
+  "seasonal2": {
+    "name": "Pastel Pink",
+    "colors": {
+      "primary": "#ffd1dc",
+      "background": "#ffe6f0",
+      "text": "#800000",
+      "secondary": "#ffb6c1",
+      "accent": "#ff69b4"
+    }
+  },
+  "seasonal3": {
+    "name": "Sunflower Yellow",
+    "colors": {
+      "primary": "#ffc312",
+      "background": "#fffbe6",
+      "text": "#996600",
+      "secondary": "#ffe58f",
+      "accent": "#f5c518"
+    }
+  },
+  "seasonal4": {
+    "name": "Autumn Orange",
+    "colors": {
+      "primary": "#ff8c00",
+      "background": "#fff5e1",
+      "text": "#663300",
+      "secondary": "#ffcc80",
+      "accent": "#ff9800"
+    }
+  },
+  "seasonal5": {
+    "name": "Pumpkin Spice",
+    "colors": {
+      "primary": "#ff7518",
+      "background": "#fff3e0",
+      "text": "#663300",
+      "secondary": "#ffcc80",
+      "accent": "#ffb347"
+    }
+  },
+  "seasonal6": {
+    "name": "Winter Blue",
+    "colors": {
+      "primary": "#00bfff",
+      "background": "#e6f7ff",
+      "text": "#003366",
+      "secondary": "#80d4ff",
+      "accent": "#1e90ff"
+    }
+  },
+  "seasonal7": {
+    "name": "Snow White",
+    "colors": {
+      "primary": "#ffffff",
+      "background": "#ffffff",
+      "text": "#333333",
+      "secondary": "#f0f0f0",
+      "accent": "#add8e6"
+    }
+  },
+  "seasonal8": {
+    "name": "Holiday Red",
+    "colors": {
+      "primary": "#ff0000",
+      "background": "#ffe5e5",
+      "text": "#800000",
+      "secondary": "#ffcccc",
+      "accent": "#ff4d4d"
+    }
+  },
+  "earth1": {
+    "name": "Olive Green",
+    "colors": {
+      "primary": "#808000",
+      "background": "#f0f0f0",
+      "text": "#333333",
+      "secondary": "#c0c000",
+      "accent": "#a9a900"
+    }
+  },
+  "earth2": {
+    "name": "Sage Green",
+    "colors": {
+      "primary": "#9caf88",
+      "background": "#f5f5f5",
+      "text": "#2f4f4f",
+      "secondary": "#c1d9b9",
+      "accent": "#8fbc8f"
+    }
+  },
+  "earth3": {
+    "name": "Terracotta",
+    "colors": {
+      "primary": "#e2725b",
+      "background": "#ffe5d9",
+      "text": "#5d4037",
+      "secondary": "#f4a460",
+      "accent": "#d2691e"
+    }
+  },
+  "earth4": {
+    "name": "Burnt Sienna",
+    "colors": {
+      "primary": "#e97451",
+      "background": "#fff0e6",
+      "text": "#8b4000",
+      "secondary": "#ffdead",
+      "accent": "#cd5c5c"
+    }
+  },
+  "earth5": {
+    "name": "Khaki",
+    "colors": {
+      "primary": "#f0e68c",
+      "background": "#f5f5dc",
+      "text": "#556b2f",
+      "secondary": "#eee8aa",
+      "accent": "#c3b091"
+    }
+  },
+  "earth6": {
+    "name": "Sepia",
+    "colors": {
+      "primary": "#704214",
+      "background": "#fff8dc",
+      "text": "#2f4f4f",
+      "secondary": "#d2b48c",
+      "accent": "#8b4513"
+    }
+  },
+  "earth7": {
+    "name": "Cocoa Brown",
+    "colors": {
+      "primary": "#a52a2a",
+      "background": "#f5f5f5",
+      "text": "#ffffff",
+      "secondary": "#c46210",
+      "accent": "#8b4513"
+    }
+  },
+  "earth8": {
+    "name": "Mocha",
+    "colors": {
+      "primary": "#837060",
+      "background": "#f0e6d2",
+      "text": "#3b2f2f",
+      "secondary": "#d2b48c",
+      "accent": "#8b4513"
+    }
+  },
+  "metallic1": {
+    "name": "Gold",
+    "colors": {
+      "primary": "#ffd700",
+      "background": "#fffbe6",
+      "text": "#663300",
+      "secondary": "#ffe58f",
+      "accent": "#f5c518"
+    }
+  },
+  "metallic2": {
+    "name": "Silver",
+    "colors": {
+      "primary": "#c0c0c0",
+      "background": "#f5f5f5",
+      "text": "#333333",
+      "secondary": "#dcdcdc",
+      "accent": "#b0b0b0"
+    }
+  },
+  "metallic3": {
+    "name": "Bronze",
+    "colors": {
+      "primary": "#cd7f32",
+      "background": "#fff0e6",
+      "text": "#4d2600",
+      "secondary": "#d2691e",
+      "accent": "#b87333"
+    }
+  },
+  "metallic4": {
+    "name": "Copper",
+    "colors": {
+      "primary": "#b87333",
+      "background": "#fff5e1",
+      "text": "#4d2600",
+      "secondary": "#ffdab9",
+      "accent": "#cd7f32"
+    }
+  },
+  "metallic5": {
+    "name": "Platinum",
+    "colors": {
+      "primary": "#e5e4e2",
+      "background": "#f5f5f5",
+      "text": "#333333",
+      "secondary": "#dcdcdc",
+      "accent": "#b0b0b0"
+    }
+  },
+  "metallic6": {
+    "name": "Rose Gold",
+    "colors": {
+      "primary": "#b76e79",
+      "background": "#ffe6e6",
+      "text": "#4d0f10",
+      "secondary": "#ffb6c1",
+      "accent": "#f4c2c2"
+    }
+  },
+  "pastel1": {
+    "name": "Baby Pink",
+    "colors": {
+      "primary": "#ffc0cb",
+      "background": "#ffe6f0",
+      "text": "#800000",
+      "secondary": "#ffb6c1",
+      "accent": "#ff69b4"
+    }
+  },
+  "pastel2": {
+    "name": "Sky Blue",
+    "colors": {
+      "primary": "#87ceeb",
+      "background": "#e0f7ff",
+      "text": "#003366",
+      "secondary": "#add8e6",
+      "accent": "#00bfff"
+    }
+  },
+  "pastel3": {
+    "name": "Pale Mint",
+    "colors": {
+      "primary": "#98ff98",
+      "background": "#f0fff0",
+      "text": "#006400",
+      "secondary": "#ccffcc",
+      "accent": "#32cd32"
+    }
+  },
+  "pastel4": {
+    "name": "Soft Lavender",
+    "colors": {
+      "primary": "#e6e6fa",
+      "background": "#f5f5ff",
+      "text": "#4b0082",
+      "secondary": "#dda0dd",
+      "accent": "#9370db"
+    }
+  },
+  "pastel5": {
+    "name": "Lemon Chiffon",
+    "colors": {
+      "primary": "#fffacd",
+      "background": "#fffacd",
+      "text": "#666600",
+      "secondary": "#ffffe0",
+      "accent": "#ffff99"
+    }
+  },
+  "vibrant1": {
+    "name": "Tangerine",
+    "colors": {
+      "primary": "#ff9400",
+      "background": "#fff3e0",
+      "text": "#663300",
+      "secondary": "#ffcc80",
+      "accent": "#ff6600"
+    }
+  },
+  "vibrant2": {
+    "name": "Lime Green",
+    "colors": {
+      "primary": "#32cd32",
+      "background": "#e6ffe6",
+      "text": "#004d00",
+      "secondary": "#ccffcc",
+      "accent": "#66ff66"
+    }
+  },
+  "vibrant3": {
+    "name": "Bright Purple",
+    "colors": {
+      "primary": "#800080",
+      "background": "#f5f0ff",
+      "text": "#ffffff",
+      "secondary": "#dda0dd",
+      "accent": "#9932cc"
+    }
+  },
+  "vibrant4": {
+    "name": "Cerulean Blue",
+    "colors": {
+      "primary": "#007ba7",
+      "background": "#e0f7ff",
+      "text": "#003366",
+      "secondary": "#66cdaa",
+      "accent": "#1e90ff"
+    }
+  },
+  "vibrant5": {
+    "name": "Fuchsia",
+    "colors": {
+      "primary": "#ff00ff",
+      "background": "#ffe6ff",
+      "text": "#800080",
+      "secondary": "#ffb6c1",
+      "accent": "#ff69b4"
+    }
+  },
+  "monochromatic1": {
+    "name": "Dark Blue",
+    "colors": {
+      "primary": "#00008b",
+      "background": "#000080",
+      "text": "#f0f8ff",
+      "secondary": "#191970",
+      "accent": "#0000cd"
+    }
+  },
+  "monochromatic2": {
+    "name": "Medium Blue",
+    "colors": {
+      "primary": "#0000cd",
+      "background": "#4169e1",
+      "text": "#ffffff",
+      "secondary": "#1e90ff",
+      "accent": "#6495ed"
+    }
+  },
+  "monochromatic3": {
+    "name": "Light Blue",
+    "colors": {
+      "primary": "#add8e6",
+      "background": "#b0e0e6",
+      "text": "#000080",
+      "secondary": "#87ceeb",
+      "accent": "#00bfff"
+    }
+  },
+  "monochromatic4": {
+    "name": "Navy Blue",
+    "colors": {
+      "primary": "#000080",
+      "background": "#000080",
+      "text": "#f0f8ff",
+      "secondary": "#1e3a8a",
+      "accent": "#0000ff"
+    }
+  },
+  "monochromatic5": {
+    "name": "Royal Blue",
+    "colors": {
+      "primary": "#4169e1",
+      "background": "#e6e6fa",
+      "text": "#ffffff",
+      "secondary": "#6495ed",
+      "accent": "#0000ff"
+    }
+  }
+}
