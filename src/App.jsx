@@ -946,9 +946,14 @@ const App = () => {
       setContrast(savedContrast);
       setShadow(savedShadow);
     };
-
-    fetch('${process.env.PUBLIC_URL}/themes.json')
-      .then(response => response.json())
+    // Fixed fetch URL
+    fetch('/themes.json')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
       .then(data => {
         setThemes(data);
         loadPreferences();
