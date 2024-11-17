@@ -1,6 +1,5 @@
-// First, replace the shadcn imports with these custom components:
+// App.jsx
 
-// At the top of your App.jsx, replace the shadcn imports with:
 import React, { useState, useEffect, createContext, useContext, useCallback } from 'react';
 import {
   Sun,
@@ -29,7 +28,7 @@ const TooltipProvider = ({ children }) => children;
 
 const Tooltip = ({ children }) => {
   const [isVisible, setIsVisible] = useState(false);
-  
+
   return (
     <div 
       className="relative inline-block"
@@ -61,6 +60,7 @@ const AlertDescription = ({ children }) => (
     {children}
   </div>
 );
+
 // Theme Context with enhanced features
 const ThemeContext = createContext();
 
@@ -117,7 +117,7 @@ const CustomizationModal = ({ isOpen, onClose }) => {
     shadow,
     setShadow
   } = useContext(ThemeContext);
-  
+
   const [activeTab, setActiveTab] = useState('general');
   const [showAdvanced, setShowAdvanced] = useState(false);
   const [localSettings, setLocalSettings] = useState({
@@ -479,255 +479,295 @@ const ThemeGrid = () => {
   const [filter, setFilter] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
   const [view, setView] = useState('grid'); // 'grid' or 'list'
-const [favorites, setFavorites] = useState(() => {
-      const saved = localStorage.getItem('favoriteThemes');
-      return saved ? JSON.parse(saved) : [];
-    });
+  const [favorites, setFavorites] = useState(() => {
+    const saved = localStorage.getItem('favoriteThemes');
+    return saved ? JSON.parse(saved) : [];
+  });
 
-    const [sortBy, setSortBy] = useState('name'); // 'name', 'type', 'recent'
-    const [recentThemes, setRecentThemes] = useState(() => {
-      const saved = localStorage.getItem('recentThemes');
-      return saved ? JSON.parse(saved) : [];
-    });
+  const [sortBy, setSortBy] = useState('name'); // 'name', 'type', 'recent'
+  const [recentThemes, setRecentThemes] = useState(() => {
+    const saved = localStorage.getItem('recentThemes');
+    return saved ? JSON.parse(saved) : [];
+  });
 
-    // Save favorites and recent themes to localStorage
-    useEffect(() => {
-      localStorage.setItem('favoriteThemes', JSON.stringify(favorites));
-      localStorage.setItem('recentThemes', JSON.stringify(recentThemes));
-    }, [favorites, recentThemes]);
+  // Save favorites and recent themes to localStorage
+  useEffect(() => {
+    localStorage.setItem('favoriteThemes', JSON.stringify(favorites));
+    localStorage.setItem('recentThemes', JSON.stringify(recentThemes));
+  }, [favorites, recentThemes]);
 
-    // Update recent themes when changing theme
-    useEffect(() => {
-      if (currentTheme) {
-        setRecentThemes(prev => {
-          const newRecent = [currentTheme, ...prev.filter(t => t !== currentTheme)].slice(0, 5);
-          return newRecent;
-        });
+  // Update recent themes when changing theme
+  useEffect(() => {
+    if (currentTheme) {
+      setRecentThemes(prev => {
+        const newRecent = [currentTheme, ...prev.filter(t => t !== currentTheme)].slice(0, 5);
+        return newRecent;
+      });
+    }
+  }, [currentTheme]);
+
+  const toggleFavorite = useCallback((themeKey) => {
+    setFavorites(prev => {
+      if (prev.includes(themeKey)) {
+        return prev.filter(k => k !== themeKey);
       }
-    }, [currentTheme]);
+      return [...prev, themeKey];
+    });
+  }, []);
 
-    const toggleFavorite = useCallback((themeKey) => {
-      setFavorites(prev => {
-        if (prev.includes(themeKey)) {
-          return prev.filter(k => k !== themeKey);
-        }
-        return [...prev, themeKey];
-      });
-    }, []);
+  const filteredThemes = Object.entries(themes)
+    .filter(([key, theme]) => {
+      const matchesFilter = filter === 'all' || 
+                          (filter === 'favorites' && favorites.includes(key)) ||
+                          key.startsWith(filter);
+      const matchesSearch = theme.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                          key.toLowerCase().includes(searchTerm.toLowerCase());
+      return matchesFilter && matchesSearch;
+    })
+    .sort((a, b) => {
+      if (sortBy === 'name') {
+        return a[1].name.localeCompare(b[1].name);
+      }
+      if (sortBy === 'type') {
+        return a[0].localeCompare(b[0]);
+      }
+      if (sortBy === 'recent') {
+        const aIndex = recentThemes.indexOf(a[0]);
+        const bIndex = recentThemes.indexOf(b[0]);
+        if (aIndex === -1 && bIndex === -1) return 0;
+        if (aIndex === -1) return 1;
+        if (bIndex === -1) return -1;
+        return aIndex - bIndex;
+      }
+      return 0;
+    });
 
-    const filteredThemes = Object.entries(themes)
-      .filter(([key, theme]) => {
-        const matchesFilter = filter === 'all' || 
-                            (filter === 'favorites' && favorites.includes(key)) ||
-                            key.startsWith(filter);
-        const matchesSearch = theme.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                            key.toLowerCase().includes(searchTerm.toLowerCase());
-        return matchesFilter && matchesSearch;
-      })
-      .sort((a, b) => {
-        if (sortBy === 'name') {
-          return a[1].name.localeCompare(b[1].name);
-        }
-        if (sortBy === 'type') {
-          return a[0].localeCompare(b[0]);
-        }
-        if (sortBy === 'recent') {
-          const aIndex = recentThemes.indexOf(a[0]);
-          const bIndex = recentThemes.indexOf(b[0]);
-          if (aIndex === -1 && bIndex === -1) return 0;
-          if (aIndex === -1) return 1;
-          if (bIndex === -1) return -1;
-          return aIndex - bIndex;
-        }
-        return 0;
-      });
+  const copyThemeColors = (theme) => {
+    const colorString = JSON.stringify(theme.colors, null, 2);
+    navigator.clipboard.writeText(colorString);
+  };
 
-    const copyThemeColors = (theme) => {
-      const colorString = JSON.stringify(theme.colors, null, 2);
-      navigator.clipboard.writeText(colorString);
-    };
-
-    return (
-      <div className="p-4 space-y-4">
-        <div className="flex flex-col md:flex-row gap-4 justify-between items-start md:items-center">
-          <h2 className="text-lg font-bold">Choose Your Theme</h2>
+  return (
+    <div className="p-4 space-y-4">
+      <div className="flex flex-col md:flex-row gap-4 justify-between items-start md:items-center">
+        <h2 className="text-lg font-bold">Choose Your Theme</h2>
+        
+        <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
+          {/* Search Input */}
+          <div className="relative flex-grow">
+            <input
+              type="text"
+              placeholder="Search themes..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full px-4 py-2 rounded-lg pl-10"
+              style={{
+                backgroundColor: themes[currentTheme].colors.secondary,
+                color: themes[currentTheme].colors.text,
+                borderRadius: `${borderRadius}px`,
+                boxShadow: `0 ${shadow * 0.02}px ${shadow * 0.1}px ${themes[currentTheme].colors.primary}40`
+              }}
+            />
+            <Search className="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 opacity-50" />
+          </div>
           
-          <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
-            {/* Search Input */}
-            <div className="relative flex-grow">
-              <input
-                type="text"
-                placeholder="Search themes..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full px-4 py-2 rounded-lg pl-10"
-                style={{
-                  backgroundColor: themes[currentTheme].colors.secondary,
-                  color: themes[currentTheme].colors.text,
-                  borderRadius: `${borderRadius}px`,
-                  boxShadow: `0 ${shadow * 0.02}px ${shadow * 0.1}px ${themes[currentTheme].colors.primary}40`
-                }}
-              />
-              <Search className="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 opacity-50" />
-            </div>
-            
-            {/* View Toggle */}
-            <div className="flex gap-2">
-              <button
-                onClick={() => setView('grid')}
-                className={`p-2 rounded-lg ${animation}`}
-                style={{
-                  backgroundColor: view === 'grid' ? themes[currentTheme].colors.primary : themes[currentTheme].colors.secondary,
-                  color: view === 'grid' ? '#fff' : themes[currentTheme].colors.text,
-                  borderRadius: `${borderRadius}px`
-                }}
-              >
-                <Grid className="w-5 h-5" />
-              </button>
-              <button
-                onClick={() => setView('list')}
-                className={`p-2 rounded-lg ${animation}`}
-                style={{
-                  backgroundColor: view === 'list' ? themes[currentTheme].colors.primary : themes[currentTheme].colors.secondary,
-                  color: view === 'list' ? '#fff' : themes[currentTheme].colors.text,
-                  borderRadius: `${borderRadius}px`
-                }}
-              >
-                <List className="w-5 h-5" />
-              </button>
-            </div>
+          {/* View Toggle */}
+          <div className="flex gap-2">
+            <button
+              onClick={() => setView('grid')}
+              className={`p-2 rounded-lg ${animation}`}
+              style={{
+                backgroundColor: view === 'grid' ? themes[currentTheme].colors.primary : themes[currentTheme].colors.secondary,
+                color: view === 'grid' ? '#fff' : themes[currentTheme].colors.text,
+                borderRadius: `${borderRadius}px`
+              }}
+            >
+              <Grid className="w-5 h-5" />
+            </button>
+            <button
+              onClick={() => setView('list')}
+              className={`p-2 rounded-lg ${animation}`}
+              style={{
+                backgroundColor: view === 'list' ? themes[currentTheme].colors.primary : themes[currentTheme].colors.secondary,
+                color: view === 'list' ? '#fff' : themes[currentTheme].colors.text,
+                borderRadius: `${borderRadius}px`
+              }}
+            >
+              <List className="w-5 h-5" />
+            </button>
           </div>
         </div>
+      </div>
 
-        {/* Filters and Sort */}
-        <div className="flex flex-wrap gap-4 justify-between">
-          <div className="flex gap-2 flex-wrap">
-            {['all', 'light', 'dark', 'special', 'favorites'].map((type) => (
-              <button
-                key={type}
-                onClick={() => setFilter(type)}
-                className={`px-4 py-2 rounded-lg ${animation}`}
-                style={{
-                  backgroundColor: filter === type ? themes[currentTheme].colors.primary : themes[currentTheme].colors.secondary,
-                  color: filter === type ? '#fff' : themes[currentTheme].colors.text,
-                  borderRadius: `${borderRadius}px`
-                }}
-              >
-                {type === 'favorites' ? (
-                  <div className="flex items-center gap-2">
-                    <Heart className="w-4 h-4" fill={filter === 'favorites' ? '#fff' : 'none'} />
-                    <span>Favorites</span>
-                  </div>
-                ) : (
-                  type.charAt(0).toUpperCase() + type.slice(1)
-                )}
-              </button>
-            ))}
-          </div>
-
-          <select
-            value={sortBy}
-            onChange={(e) => setSortBy(e.target.value)}
-            className="px-4 py-2 rounded-lg"
-            style={{
-              backgroundColor: themes[currentTheme].colors.secondary,
-              color: themes[currentTheme].colors.text,
-              borderRadius: `${borderRadius}px`
-            }}
-          >
-            <option value="name">Sort by Name</option>
-            <option value="type">Sort by Type</option>
-            <option value="recent">Sort by Recent</option>
-          </select>
+      {/* Filters and Sort */}
+      <div className="flex flex-wrap gap-4 justify-between">
+        <div className="flex gap-2 flex-wrap">
+          {['all', 'light', 'dark', 'special', 'favorites'].map((type) => (
+            <button
+              key={type}
+              onClick={() => setFilter(type)}
+              className={`px-4 py-2 rounded-lg ${animation}`}
+              style={{
+                backgroundColor: filter === type ? themes[currentTheme].colors.primary : themes[currentTheme].colors.secondary,
+                color: filter === type ? '#fff' : themes[currentTheme].colors.text,
+                borderRadius: `${borderRadius}px`
+              }}
+            >
+              {type === 'favorites' ? (
+                <div className="flex items-center gap-2">
+                  <Heart className="w-4 h-4" fill={filter === 'favorites' ? '#fff' : 'none'} />
+                  <span>Favorites</span>
+                </div>
+              ) : (
+                type.charAt(0).toUpperCase() + type.slice(1)
+              )}
+            </button>
+          ))}
         </div>
 
-        {/* Theme Grid/List View */}
-        <div 
-          className={`overflow-y-auto max-h-[70vh] rounded-lg p-4 ${animation}`}
+        <select
+          value={sortBy}
+          onChange={(e) => setSortBy(e.target.value)}
+          className="px-4 py-2 rounded-lg"
           style={{
             backgroundColor: themes[currentTheme].colors.secondary,
+            color: themes[currentTheme].colors.text,
             borderRadius: `${borderRadius}px`
           }}
         >
-          <div className={view === 'grid' 
-            ? "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
-            : "flex flex-col gap-4"
-          }>
-            {filteredThemes.map(([key, theme]) => (
-              <div
-                key={key}
-                onClick={() => setCurrentTheme(key)}
-                className={`${animation} cursor-pointer`}
-                style={{
-                  backgroundColor: theme.colors.background,
-                  color: theme.colors.text,
-                  borderRadius: `${borderRadius}px`,
-                  boxShadow: `0 ${shadow * 0.02}px ${shadow * 0.1}px ${themes[currentTheme].colors.primary}40`
-                }}
-              >
-                {view === 'grid' ? (
-                  <GridViewItem
-                    theme={theme}
-                    themeKey={key}
-                    isActive={currentTheme === key}
-                    isFavorite={favorites.includes(key)}
-                    onFavorite={() => toggleFavorite(key)}
-                    onCopy={() => copyThemeColors(theme)}
-                    borderRadius={borderRadius}
-                  />
-                ) : (
-                  <ListViewItem
-                    theme={theme}
-                    themeKey={key}
-                    isActive={currentTheme === key}
-                    isFavorite={favorites.includes(key)}
-                    onFavorite={() => toggleFavorite(key)}
-                    onCopy={() => copyThemeColors(theme)}
-                    borderRadius={borderRadius}
-                  />
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    );
-  };
-
-  // Grid View Item Component
-  const GridViewItem = ({ theme, themeKey, isActive, isFavorite, onFavorite, onCopy, borderRadius }) => (
-    <div className="p-4 space-y-3">
-      <div className="flex justify-between items-center">
-        <h3 className="font-semibold truncate flex-grow">
-          {theme.name}
-        </h3>
-        <div className="flex gap-2">
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              onFavorite();
-            }}
-            className="p-1 rounded-full hover:scale-110 transition-transform"
-          >
-            <Heart
-              className="w-4 h-4"
-              fill={isFavorite ? theme.colors.accent : 'none'}
-              stroke={theme.colors.accent}
-            />
-          </button>
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              onCopy();
-            }}
-            className="p-1 rounded-full hover:scale-110 transition-transform"
-          >
-            <Copy className="w-4 h-4" stroke={theme.colors.accent} />
-          </button>
-        </div>
+          <option value="name">Sort by Name</option>
+          <option value="type">Sort by Type</option>
+          <option value="recent">Sort by Recent</option>
+        </select>
       </div>
 
-      <div className="grid grid-cols-5 gap-1">
+      {/* Theme Grid/List View */}
+      <div 
+        className={`overflow-y-auto max-h-[70vh] rounded-lg p-4 ${animation}`}
+        style={{
+          backgroundColor: themes[currentTheme].colors.secondary,
+          borderRadius: `${borderRadius}px`
+        }}
+      >
+        <div className={view === 'grid' 
+          ? "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+          : "flex flex-col gap-4"
+        }>
+          {filteredThemes.map(([key, theme]) => (
+            <div
+              key={key}
+              onClick={() => setCurrentTheme(key)}
+              className={`${animation} cursor-pointer`}
+              style={{
+                backgroundColor: theme.colors.background,
+                color: theme.colors.text,
+                borderRadius: `${borderRadius}px`,
+                boxShadow: `0 ${shadow * 0.02}px ${shadow * 0.1}px ${themes[currentTheme].colors.primary}40`
+              }}
+            >
+              {view === 'grid' ? (
+                <GridViewItem
+                  theme={theme}
+                  themeKey={key}
+                  isActive={currentTheme === key}
+                  isFavorite={favorites.includes(key)}
+                  onFavorite={() => toggleFavorite(key)}
+                  onCopy={() => copyThemeColors(theme)}
+                  borderRadius={borderRadius}
+                />
+              ) : (
+                <ListViewItem
+                  theme={theme}
+                  themeKey={key}
+                  isActive={currentTheme === key}
+                  isFavorite={favorites.includes(key)}
+                  onFavorite={() => toggleFavorite(key)}
+                  onCopy={() => copyThemeColors(theme)}
+                  borderRadius={borderRadius}
+                />
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// Grid View Item Component
+const GridViewItem = ({ theme, themeKey, isActive, isFavorite, onFavorite, onCopy, borderRadius }) => (
+  <div className="p-4 space-y-3">
+    <div className="flex justify-between items-center">
+      <h3 className="font-semibold truncate flex-grow">
+        {theme.name}
+      </h3>
+      <div className="flex gap-2">
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            onFavorite();
+          }}
+          className="p-1 rounded-full hover:scale-110 transition-transform"
+        >
+          <Heart
+            className="w-4 h-4"
+            fill={isFavorite ? theme.colors.accent : 'none'}
+            stroke={theme.colors.accent}
+          />
+        </button>
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            onCopy();
+          }}
+          className="p-1 rounded-full hover:scale-110 transition-transform"
+        >
+          <Copy className="w-4 h-4" stroke={theme.colors.accent} />
+        </button>
+      </div>
+    </div>
+
+    <div className="grid grid-cols-5 gap-1">
+      {Object.entries(theme.colors).map(([colorName, colorValue]) => (
+        <div
+          key={colorName}
+          className="relative group"
+          title={`${colorName}: ${colorValue}`}
+        >
+          <div
+            className="w-full h-6 transition-transform group-hover:scale-110"
+            style={{ 
+              backgroundColor: colorValue,
+              borderRadius: `${borderRadius}px`
+            }}
+          />
+          <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 
+            bg-black text-white px-2 py-1 rounded text-xs opacity-0 group-hover:opacity-100 
+            transition-opacity whitespace-nowrap pointer-events-none z-10">
+            {colorName}
+          </span>
+        </div>
+      ))}
+    </div>
+
+    {isActive && (
+      <div className="absolute top-2 right-2">
+        <Check className="w-4 h-4" style={{ color: theme.colors.accent }} />
+      </div>
+    )}
+  </div>
+);
+
+// List View Item Component
+const ListViewItem = ({ theme, themeKey, isActive, isFavorite, onFavorite, onCopy, borderRadius }) => (
+  <div className="p-4 flex items-center gap-4">
+    <div className="flex-grow">
+      <h3 className="font-semibold">{theme.name}</h3>
+      <div className="text-sm opacity-75">{themeKey}</div>
+    </div>
+
+    <div className="flex items-center gap-4">
+      <div className="flex gap-1">
         {Object.entries(theme.colors).map(([colorName, colorValue]) => (
           <div
             key={colorName}
@@ -735,87 +775,48 @@ const [favorites, setFavorites] = useState(() => {
             title={`${colorName}: ${colorValue}`}
           >
             <div
-              className="w-full h-6 transition-transform group-hover:scale-110"
+              className="w-6 h-6 transition-transform group-hover:scale-110"
               style={{ 
                 backgroundColor: colorValue,
                 borderRadius: `${borderRadius}px`
               }}
             />
-            <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 
-              bg-black text-white px-2 py-1 rounded text-xs opacity-0 group-hover:opacity-100 
-              transition-opacity whitespace-nowrap pointer-events-none z-10">
-              {colorName}
-            </span>
           </div>
         ))}
       </div>
 
+      <div className="flex gap-2">
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            onFavorite();
+          }}
+          className="p-1 rounded-full hover:scale-110 transition-transform"
+        >
+          <Heart
+            className="w-4 h-4"
+            fill={isFavorite ? theme.colors.accent : 'none'}
+            stroke={theme.colors.accent}
+          />
+        </button>
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            onCopy();
+          }}
+          className="p-1 rounded-full hover:scale-110 transition-transform"
+        >
+          <Copy className="w-4 h-4" stroke={theme.colors.accent} />
+        </button>
+      </div>
+
       {isActive && (
-        <div className="absolute top-2 right-2">
-          <Check className="w-4 h-4" style={{ color: theme.colors.accent }} />
-        </div>
+        <Check className="w-4 h-4" style={{ color: theme.colors.accent }} />
       )}
     </div>
-  );
+  </div>
+);
 
-  // List View Item Component
-  const ListViewItem = ({ theme, themeKey, isActive, isFavorite, onFavorite, onCopy, borderRadius }) => (
-    <div className="p-4 flex items-center gap-4">
-      <div className="flex-grow">
-        <h3 className="font-semibold">{theme.name}</h3>
-        <div className="text-sm opacity-75">{themeKey}</div>
-      </div>
-
-      <div className="flex items-center gap-4">
-        <div className="flex gap-1">
-          {Object.entries(theme.colors).map(([colorName, colorValue]) => (
-            <div
-              key={colorName}
-              className="relative group"
-              title={`${colorName}: ${colorValue}`}
-            >
-              <div
-                className="w-6 h-6 transition-transform group-hover:scale-110"
-                style={{ 
-                  backgroundColor: colorValue,
-                  borderRadius: `${borderRadius}px`
-                }}
-              />
-            </div>
-          ))}
-        </div>
-
-        <div className="flex gap-2">
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              onFavorite();
-            }}
-            className="p-1 rounded-full hover:scale-110 transition-transform"
-          >
-            <Heart
-              className="w-4 h-4"
-              fill={isFavorite ? theme.colors.accent : 'none'}
-              stroke={theme.colors.accent}
-            />
-          </button>
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              onCopy();
-            }}
-            className="p-1 rounded-full hover:scale-110 transition-transform"
-          >
-            <Copy className="w-4 h-4" stroke={theme.colors.accent} />
-          </button>
-        </div>
-
-        {isActive && (
-          <Check className="w-4 h-4" style={{ color: theme.colors.accent }} />
-        )}
-      </div>
-    </div>
-  );
 // Header Component
 const Header = () => {
   const { 
@@ -899,6 +900,120 @@ const Header = () => {
         </div>
       )}
     </header>
+  );
+};
+
+// ThemePreview Component
+const ThemePreview = ({ theme, animation, borderRadius, shadow }) => {
+  const { colors } = theme;
+
+  return (
+    <div 
+      className={`p-6 rounded-lg ${animation}`}
+      style={{
+        backgroundColor: colors.background,
+        color: colors.text,
+        borderRadius: `${borderRadius}px`,
+        boxShadow: `0 ${shadow * 0.02}px ${shadow * 0.1}px ${colors.primary}40`
+      }}
+    >
+      <div className="space-y-6">
+        {/* Text Samples */}
+        <div className="space-y-2">
+          <h3 style={{ color: colors.primary }} className="text-2xl font-bold">
+            Sample Heading
+          </h3>
+          <p className="text-base">
+            This is a sample paragraph showing how text appears with this theme.
+          </p>
+        </div>
+
+        {/* Buttons */}
+        <div className="flex flex-wrap gap-3">
+          <button
+            className={`px-4 py-2 rounded-lg ${animation}`}
+            style={{
+              backgroundColor: colors.primary,
+              color: '#fff',
+              borderRadius: `${borderRadius}px`
+            }}
+          >
+            Primary Button
+          </button>
+          <button
+            className={`px-4 py-2 rounded-lg ${animation}`}
+            style={{
+              backgroundColor: colors.secondary,
+              color: colors.text,
+              borderRadius: `${borderRadius}px`
+            }}
+          >
+            Secondary Button
+          </button>
+        </div>
+
+        {/* Color Palette */}
+        <div className="space-y-2">
+          <h4 className="font-semibold">Color Palette</h4>
+          <div className="grid grid-cols-5 gap-2">
+            {Object.entries(colors).map(([name, value]) => (
+              <div
+                key={name}
+                className="flex flex-col items-center"
+              >
+                <div
+                  className="w-full h-10 rounded-lg"
+                  style={{
+                    backgroundColor: value,
+                    borderRadius: `${borderRadius}px`
+                  }}
+                />
+                <span className="text-xs mt-1">{name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Sample Card */}
+        <div
+          className="p-4 rounded-lg"
+          style={{
+            backgroundColor: colors.secondary,
+            borderRadius: `${borderRadius}px`
+          }}
+        >
+          <h4 style={{ color: colors.primary }} className="font-semibold">
+            Card Example
+          </h4>
+          <p className="text-sm mt-2">
+            This is how a card component would look with this theme.
+          </p>
+        </div>
+
+        {/* Interactive Elements */}
+        <div className="flex flex-wrap gap-4">
+          <div
+            className={`p-3 rounded-lg cursor-pointer ${animation}`}
+            style={{
+              backgroundColor: colors.secondary,
+              borderRadius: `${borderRadius}px`
+            }}
+          >
+            Hover Me
+          </div>
+          <div
+            className={`p-3 rounded-lg ${animation}`}
+            style={{
+              backgroundColor: colors.accent,
+              color: '#fff',
+              borderRadius: `${borderRadius}px`
+            }}
+          >
+            Accent Element
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 
@@ -1027,8 +1142,66 @@ const App = () => {
         }}
       >
         <Header />
-        <main className="container mx-auto">
-          <ThemeGrid />
+        <main className="container mx-auto py-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* Theme Preview Panel */}
+            <div className="lg:col-span-1">
+              <div className="sticky top-8">
+                <h2 className="text-xl font-bold mb-4">Current Theme Preview</h2>
+                <ThemePreview 
+                  theme={themes[currentTheme]}
+                  animation={animation}
+                  borderRadius={borderRadius}
+                  shadow={shadow}
+                />
+                
+                {/* Quick Actions */}
+                <div 
+                  className={`mt-4 p-4 rounded-lg ${animation}`}
+                  style={{
+                    backgroundColor: themes[currentTheme].colors.secondary,
+                    borderRadius: `${borderRadius}px`,
+                    boxShadow: `0 ${shadow * 0.02}px ${shadow * 0.1}px ${themes[currentTheme].colors.primary}40`
+                  }}
+                >
+                  <h3 className="font-semibold mb-3">Quick Actions</h3>
+                  <div className="flex flex-wrap gap-2">
+                    <button
+                      onClick={toggleDark}
+                      className={`px-4 py-2 rounded-lg flex items-center gap-2 ${animation}`}
+                      style={{
+                        backgroundColor: themes[currentTheme].colors.primary,
+                        color: '#fff',
+                        borderRadius: `${borderRadius}px`
+                      }}
+                    >
+                      {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+                      Toggle Mode
+                    </button>
+                    <button
+                      onClick={() => {
+                        const colors = themes[currentTheme].colors;
+                        navigator.clipboard.writeText(JSON.stringify(colors, null, 2));
+                      }}
+                      className={`px-4 py-2 rounded-lg flex items-center gap-2 ${animation}`}
+                      style={{
+                        backgroundColor: themes[currentTheme].colors.secondary,
+                        borderRadius: `${borderRadius}px`
+                      }}
+                    >
+                      <Copy className="w-4 h-4" />
+                      Copy Colors
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Theme Grid */}
+            <div className="lg:col-span-2">
+              <ThemeGrid />
+            </div>
+          </div>
         </main>
 
         <footer 
@@ -1040,6 +1213,7 @@ const App = () => {
           }}
         >
           <p>Theme Switcher Demo - A comprehensive theme management system</p>
+          <p>Developed by: Md Shahrier Islam Arham</p>
         </footer>
       </div>
     </ThemeContext.Provider>
