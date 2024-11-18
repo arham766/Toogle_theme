@@ -602,7 +602,7 @@ const ThemeGrid = () => {
       {/* Filters and Sort */}
       <div className="flex flex-wrap gap-4 justify-between">
         <div className="flex gap-2 flex-wrap">
-          {['all', 'light', 'dark', 'special','seasonal',"accent" , "pastel","neutral","gradient","earth", 'favorites'].map((type) => (
+          {['all', 'light', 'dark', 'special','seasonal',"accent" , "pastel","neutral","gradient","earth","metallic","vibrant","ruby","monochromatic","functional","pastel", 'favorites'].map((type) => (
             <button
               key={type}
               onClick={() => setFilter(type)}
